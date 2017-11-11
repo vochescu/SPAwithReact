@@ -1,10 +1,62 @@
 <!DOCTYPE html>
 <html>
+    
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Visit Romania</title>
         <link rel="icon" type="image/png" href="icon.png" >
+        <link rel="stylesheet" href="1.css" type="text/css" />
     </head>
     <body>
-        <img title="Visit Romania" src="logo.png" height=50dp weight=30dp>
+    
+        <div style="background-color: rgba(238,222,133,0.6); box-shadow: 4px 4px 4px #888888;">
+            <img title="Visit Romania" src="logo.png" height=40px weight=20px>
+        </div>
+       
+        <header>
+        <div>
+          <img src="maintext.png" weight=20px height=40px style="float: left; margin-top: 10px; margin-left:70px;" >
+        </div>
+        <br style="clear: both;">
+        <div>
+            <input id="searchField" style="margin-left:70px; width: 28%; height: 40px;float: left; border-radius: 25px;" type="text" 
+            ng-model="customSelected" placeholder="City" uib-typeahead="city as city.fullname for city in citySearch.runFilterCities()" 
+            typeahead-focus-first="false" typeahead-wait-ms="500" typeahead-template-url="" aria-autocomplete="list" aria-expanded="false" >
+            <div btn onmouseover="this.style.cursor='pointer'" ng-click="citySearch()" 
+            style="margin-left: 5px; float: left; background-color: rgb(109,102,92); height: 40px; width: 10%; color: white; padding-top: 6px; 
+            font-size: 1.5em; font-family: HurmeGeometricSans4-SemiBold; cursor: pointer; text-align: center; border-radius: 25px;">Search</div>
+                     
+        </div>
+         <div id=bottomHeader>
+              <b>Visit Romania</b> is all about the fun of planning the details of your trip in Romanian Cities.<br>A plan with all you need to see and do.
+         </div>
+        </header>
+        <div id="titleDestinations"><h2>Destinations</h2>Discover Romania</div>
+        <div id=containerCities>
+          <div id=row1>
+              <img src="bucharest.jpg" alt="Bucharest">
+              <div class="transparentBand">
+                  <h2><span>Bucharest</span></h2>
+              </div>
+          </div>
+          <div id=row1>
+              <img src="timisoara.jpg" alt="Timișoara">
+              <div class="transparentBand">
+                  <h2><span>Timișoara</span></h2>
+              </div>
+          </div>
+          <div id=row1>
+              <img src="cluj.jpg" alt="Cluj-Napoca">
+              <div class="transparentBand">
+                  <h2><span>Cluj-Napoca</span></h2>
+              </div>
+          </div>
+          <div id=row1>
+              <img src="brasov.jpg" alt="Brașov">
+              <div class="transparentBand">
+                  <h2><span>Brașov</span></h2>
+              </div>
+          </div>          
+       </div>
     </body>
 </html>

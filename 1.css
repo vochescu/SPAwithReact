@@ -1,0 +1,77 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: url("mainimage.png") no-repeat center center ;
+  background-size: cover;
+  height: 360px;
+  margin-top: 0px;
+  margin-left: 10px;
+  overflow: auto;
+}
+#bottomHeader {
+  position: absolute;
+  top: 340px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  color: rgb(77,72,64);
+  background-color: rgba(238,222,133,0.6);
+  box-shadow: 4px 4px 4px #888888;
+  text-align: center;
+  font-family: Muli, sans-serif;
+  font-size: 14px;
+}
+#searchField{
+  margin-left:70px;
+  width: 30%;
+  height: 40px;
+  float: left; 
+  border-radius: 25px;
+}
+#titleDestinations{
+  color: rgb(77,72,64);
+  margin: 5px;
+  bottom: 0;
+  text-align: center;
+  font-family: Muli, sans-serif;
+  line-height: 14px;
+  
+}
+#containerCities{
+  display:flex;
+  flex-flow:row wrap;
+  overflow: auto;
+
+}
+#containerCities div{
+  min-width:300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+#row1{
+  float: left;
+  clear: both;
+  width: 20%;
+  height: 400px;
+  position: relative;
+  overflow: auto;
+  box-shadow: 4px 4px 4px #888888;
+  margin-left: auto; /* centrare imagini si margini egale */
+  margin-right: auto;
+}
+
+.transparentBand{
+  position: absolute;
+  bottom: 10px;
+  width: 20%;
+  height: 50px;
+  background-color: rgba(238,222,133,0.7);
+  font-family: HurmeGeometricSans4-SemiBold;
+  color: rgb(77,72,64);
+  text-align: center;
+}
+

@@ -1,0 +1,170 @@
+    Sumarizarea modelului interfetei RESTful pentru resursele aplicatiei (itineraiile de calatorie), 
+aratand metodele HTTP pe care le suporta fiecare resursa
+
+    Preluare colectie cities, adaugarea, modificarea, stergerea unui oras
+
+GET https://course-web-vochescu1.c9users.io/cities
+POST https://course-web-vochescu1.c9users.io/cities 
+body : {
+	"city":"Bucuresti",
+	"longitude":"44.589613",
+	"latitude":"41.584321"
+}
+// https://course-web-vochescu1.c9users.io/cities/{cityId}
+PUT https://course-web-vochescu1.c9users.io/cities/1
+body : {
+	"city":"Cluj",
+	"longitude":"41.589613",
+	"latitude":"46.584321"
+}
+DELETE https://course-web-vochescu1.c9users.io/cities/1
+
+// Adaugare oras dupa testare stergere
+POST https://course-web-vochescu1.c9users.io/cities 
+body : {
+	"city":"Bucuresti",
+	"longitude":"44.589613",
+	"latitude":"41.584321"
+}
+GET https://course-web-vochescu1.c9users.io/cities/2
+
+    Preluare colectie attractions, adaugarea, modificarea, stergerea unei atractii turistice dintr-un anume oras
+
+// https://course-web-vochescu1.c9users.io/cities/{cityId}/attractions
+GET https://course-web-vochescu1.c9users.io/cities/2/attractions
+POST https://course-web-vochescu1.c9users.io/cities/2/attractions
+body : {
+	"name":"Arcul de triumf",
+	"description":"Arcul de Triumf este un monument situat in partea de nord a Bucurestiului, in sectorul 1, la intersectia soselei Kiseleff cu bulevardele Constantin Prezan, Alexandru Averescu si Alexandru Constantinescu.",
+	"duration":"10",
+	"longitude":"41.589613",
+	"latitude":"46.584321"
+}
+GET https://course-web-vochescu1.c9users.io/cities/2/attractions
+// https://course-web-vochescu1.c9users.io/cities/{cityId}/attractions/{attractionId}
+PUT https://course-web-vochescu1.c9users.io/cities/2/attractions/1
+body : {
+	"name":"ARCUL de TRIUMF",
+	"description":"Arcul de Triumf este un monument situat in partea de nord a Bucurestiului, in sectorul 1, la intersectia soselei Kiseleff cu bulevardele Constantin Prezan, Alexandru Averescu si Alexandru Constantinescu.",
+	"duration":"10",
+	"longitude":"45.000152",
+	"latitude":"46.584321"
+}
+GET https://course-web-vochescu1.c9users.io/cities/2/attractions/1
+DELETE GET https://course-web-vochescu1.c9users.io/cities/2/attractions/1
+
+// Adaugare atractie turistica dupa testare stergere
+POST https://course-web-vochescu1.c9users.io/cities/2/attractions
+body : {
+	"name":"Arcul de triumf",
+	"description":"Arcul de Triumf este un monument situat in partea de nord a Bucurestiului, in sectorul 1, la intersectia soselei Kiseleff cu bulevardele Constantin Prezan, Alexandru Averescu si Alexandru Constantinescu.",
+	"duration":"10",
+	"longitude":"41.589613",
+	"latitude":"46.584321"
+}
+
+    Preluare colectie itineraries, adaugarea, modificarea, stergerea unui itinerariu dintr-un anume oras
+    
+// https://course-web-vochescu1.c9users.io/cities/{cityId}/itineraries
+GET https://course-web-vochescu1.c9users.io/cities/2/itineraries
+POST https://course-web-vochescu1.c9users.io/cities/2/itineraries
+body : {
+	"name":"ziua 1"
+}
+// https://course-web-vochescu1.c9users.io/cities/{cityId}/itineraries/{itineraryId}
+PUT https://course-web-vochescu1.c9users.io/cities/2/itineraries/1
+body : {
+	"name":"ziua 3"
+}
+DELETE https://course-web-vochescu1.c9users.io/cities/2/itineraries/1
+
+// Adaugare itinerariu dupa testare stergere
+POST https://course-web-vochescu1.c9users.io/cities/2/itineraries
+body : {
+	"name":"ziua 1"
+}
+
+    Preluare colectie attractions, adaugarea, modificarea, stergerea unei atractii turistice dintr-un anume oras si dintr-un anume itinerariu
+    
+// https://course-web-vochescu1.c9users.io/cities/{cityId}/itineraries/{itineraryId}/attractions
+GET https://course-web-vochescu1.c9users.io/cities/2/itineraries/3/attractions
+POST https://course-web-vochescu1.c9users.io/cities/2/itineraries/3/attractions
+body : {
+	"name": "Herastrau Park",
+    "description": "Herastrau Park is a large park on the northern side of Bucharest, Romania, around Lake Herastrau, one of the lakes formed by the Colentina River.",
+    "duration": 60,
+    "longitude": 41.6816,
+    "latitude": 46.5803
+}
+// https://course-web-vochescu1.c9users.io/cities/{cityId}/itineraries/{itineraryId}/attractions/{attractionId}
+PUT https://course-web-vochescu1.c9users.io/cities/2/itineraries/3/attractions/3
+body : {
+    "name": "Herastrau Park",
+    "description": "Herastrau Park is a large park on the northern side of Bucharest, Romania, around Lake Herastrau, one of the lakes formed by the Colentina River.",
+    "duration": 60,
+    "longitude": 41.6816,
+    "latitude": 46.5803,
+    "cityId": 2,
+    "itineraryId": 2
+}
+DELETE https://course-web-vochescu1.c9users.io/cities/2/itineraries/3/attractions/3
+
+    Preluare colectie attractions, adaugarea, modificarea, stergerea unei atractii turistice
+    
+GET https://course-web-vochescu1.c9users.io/attractions
+POST https://course-web-vochescu1.c9users.io/attractions
+body : {
+	"name": "Romanian Athenaeum",
+    "description": "The Romanian Athenaeum is a concert hall in the center of Bucharest, Romania and a landmark of the Romanian capital city. Opened in 1888, the ornate, domed, circular building is the city's main concert hall and home of the 'George Enescu' Philharmonic and of the George Enescu annual international music festival.",
+    "duration": 20,
+    "longitude": 41.5896,
+    "latitude": 46.5843
+}
+// https://course-web-vochescu1.c9users.io/attractions/{attractionId}
+PUT https://course-web-vochescu1.c9users.io/attractions/3
+body : {
+	"name": "Arcul de Triumf",
+    "description": "Arcul de Triumf is a triumphal arch located in the northern part of Bucharest, on the Kiseleff Road.The first, wooden, triumphal arch was built hurriedly, after Romania gained its independence (1878), so that the victorious troops could march under it. ",
+    "duration": 10,
+    "longitude": 41.5896,
+    "latitude": 46.5843
+}
+DELETE https://course-web-vochescu1.c9users.io/attractions/3
+
+  Preluare colectie itineraries, adaugarea, modificarea, stergerea unui itinerariu
+  
+GET https://course-web-vochescu1.c9users.io/itineraries
+POST https://course-web-vochescu1.c9users.io/itineraries
+body : {
+	"name": "ziua 2"
+}
+// https://course-web-vochescu1.c9users.io/itineraries/{itineraryId}
+PUT  https://course-web-vochescu1.c9users.io/itineraries/2
+body : {
+	"name": "ziua 3"
+}
+DELETE  https://course-web-vochescu1.c9users.io/itineraries/2
+
+    Preluare colectie attractions, adaugarea, modificarea, stergerea unei atractii turistice dintr-un anume itinerariu
+    
+// https://course-web-vochescu1.c9users.io/itineraries/{itineraryId}/attractions
+GET https://course-web-vochescu1.c9users.io/itineraries/3/attractions
+POST https://course-web-vochescu1.c9users.io/itineraries/3/attractions
+body : {
+	"name": "Herastrau Park",
+    "description": "Herastrau Park is a large park on the northern side of Bucharest, Romania, around Lake Herastrau, one of the lakes formed by the Colentina River.",
+    "duration": 20,
+    "longitude": 41.6816,
+    "latitude": 46.5803
+}
+GET https://course-web-vochescu1.c9users.io/itineraries/3/attractions
+// https://course-web-vochescu1.c9users.io/itineraries/{itineraryId}/attractions/{attractionId}
+PUT https://course-web-vochescu1.c9users.io/itineraries/3/attractions/3
+body : {
+	"name": "Herastrau Park",
+    "description": "Herastrau Park is a large park on the northern side of Bucharest, Romania, around Lake Herastrau, one of the lakes formed by the Colentina River.",
+    "duration": 60,
+    "longitude": 41.6816,
+    "latitude": 46.5803
+}
+DELETE https://course-web-vochescu1.c9users.io/itineraries/1/attractions/3

@@ -4,7 +4,7 @@ html, body {
 }
 
 header {
-  background: url("mainimage.png") no-repeat center center ;
+  background: url("./img/mainimage.png") no-repeat center center ;
   background-size: cover;
   height: 360px;
   margin-top: 0px;

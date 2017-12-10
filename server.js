@@ -118,13 +118,13 @@ City.hasMany(Itinerary)
 const app = express()
 app.use(bodyParser.json())
 
-// crearea tabelelor; force : true fiecare model va executa DROP TABLE IF EXISTS inainte de a executa crearea tabelei
+// crearea tabelelor; force : true pentru fiecare model se va executa DROP TABLE IF EXISTS inainte de a executa crearea tabelei
 app.get('/create',(req,res,next)=>{
     sequelize.sync({force:true}) // force : true fiecare model va executa DROP TABLE IF EXISTS inainte de a executa crearea tabelei
     .then(()=>res.status(201).send('created'))
     .catch((err)=>next(err))
 })
-//#region metode HTTP pentru resursa cities si legaturile cu aceasta
+//#region metode HTTP pentru resursa cities si legaturi
 //#region /cities
 app.get('/cities', (req,res,next)=>{
     City.findAll()
@@ -228,7 +228,7 @@ app.post('/cities/:cid/attractions', (req,res,next)=>{
 app.get('/cities/:cid/attractions/:aid', (req,res,next)=>{
      Attraction.findById(req.params.aid)
     .then((attraction)=>{
-        if(attraction){
+        if(attraction && attraction.cityId == req.params.cid){
             res.status(200).json(attraction)
         }
         else{
@@ -241,7 +241,7 @@ app.put('/cities/:cid/attractions/:aid', (req,res,next)=>{
     // doar daca nu modific si orasul
      Attraction.findById(req.params.aid)
     .then((attraction)=>{
-        if(attraction){
+        if(attraction && attraction.cityId == req.params.cid){
         return attraction.update(req.body, {fields : ['name','description','duration',
         'longitude','latitude','cityId','itineraryId']})    
         }
@@ -260,7 +260,7 @@ app.put('/cities/:cid/attractions/:aid', (req,res,next)=>{
 app.delete('/cities/:cid/attractions/:aid', (req,res,next)=>{
     Attraction.findById(req.params.aid)
     .then((attraction)=>{
-        if(attraction)
+        if(attraction && attraction.cityId == req.params.cid)
         return attraction.destroy(req.body, {fields : ['name','description','duration',
         'longitude','latitude']})
         else{
@@ -317,7 +317,7 @@ app.post('/cities/:cityId/itineraries', (req,res,next)=>{
 app.get('/cities/:cityId/itineraries/:itineraryId', (req,res,next)=>{
      Itinerary.findById(req.params.itineraryId,{include : [{ all: true }]})
     .then((itinerary)=>{
-        if(itinerary){
+        if(itinerary && itinerary.cityId == req.params.cityId){
             res.status(200).json(itinerary)
         }
         else{
@@ -327,10 +327,9 @@ app.get('/cities/:cityId/itineraries/:itineraryId', (req,res,next)=>{
     .catch((err)=>next(err))
 })
 app.put('/cities/:cityId/itineraries/:itineraryId', (req,res,next)=>{
-    // doar daca nu modific si orasul
      Itinerary.findById(req.params.itineraryId)
     .then((itinerary)=>{
-        if(itinerary){
+        if(itinerary && itinerary.cityId == req.params.cityId){
         return itinerary.update(req.body, {fields : ['name']
         })    
         }
@@ -346,11 +345,9 @@ app.put('/cities/:cityId/itineraries/:itineraryId', (req,res,next)=>{
     .catch((err)=>next(err))
 })
 app.delete('/cities/:cityId/itineraries/:itineraryId', (req,res,next)=>{
-    Itinerary.findById(req.params.itineraryId, {
-        where : {cityId : req.params.cityId }
-    })
+    Itinerary.findById(req.params.itineraryId)
     .then((itinerary)=>{
-        if(itinerary)
+        if(itinerary && itinerary.cityId == req.params.cityId)
         return itinerary.destroy(req.body, {fields : ['name']
         })
         else{
@@ -622,7 +619,7 @@ app.post('/itineraries/:itineraryId/attractions', (req,res,next)=>{
 app.get('/itineraries/:itineraryId/attractions/:attractionId', (req,res,next)=>{
      Attraction.findById(req.params.attractionId)
     .then((attraction)=>{
-        if(attraction){
+        if(attraction && attraction.itineraryId == req.params.itineraryId){
             res.status(200).json(attraction)
         }
         else{
@@ -634,7 +631,7 @@ app.get('/itineraries/:itineraryId/attractions/:attractionId', (req,res,next)=>{
 app.put('/itineraries/:itineraryId/attractions/:attractionId', (req,res,next)=>{
      Attraction.findById(req.params.attractionId)
     .then((attraction)=>{
-        if(attraction){
+        if(attraction && attraction.itineraryId == req.params.itineraryId){
         return attraction.update(req.body, {fields : ['name','description','duration',
         'longitude','latitude','cityId','itineraryId']})    
         }
@@ -652,7 +649,7 @@ app.put('/itineraries/:itineraryId/attractions/:attractionId', (req,res,next)=>{
 app.delete('/itineraries/:itineraryId/attractions/:attractionId', (req,res,next)=>{
     Attraction.findById(req.params.attractionId)
     .then((attraction)=>{
-        if(attraction)
+        if(attraction && attraction.itineraryId == req.params.itineraryId)
         return attraction.destroy(req.body, {fields : ['name','description','duration',
         'longitude','latitude']})
         else{

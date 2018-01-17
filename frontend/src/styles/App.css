@@ -1,6 +1,6 @@
-html, body {
-  margin: 0;
-  padding: 0;
+.App {
+  text-align: left;
+  margin: 5px;
 }
 
 header {
@@ -18,11 +18,11 @@ header {
   right: 0;
   height: 60px;
   color: rgb(77,72,64);
-  background-color: rgba(238,222,133,0.6);
+  background-color: rgba(238,222,133,0.8);
   box-shadow: 4px 4px 4px #888888;
   text-align: center;
   font-family: Muli, sans-serif;
-  font-size: 14px;
+  font-size: 20px;
 }
 #searchField{
   margin-left:70px;
@@ -40,38 +40,41 @@ header {
   line-height: 14px;
   
 }
-#containerCities{
-  display:flex;
-  flex-flow:row wrap;
+.title{
+  color: rgb(77,72,64);
+  text-align: left;
+  font-family: HurmeGeometricSans4-SemiBold;
+}
+.grid{
+  display:inline-block;
   overflow: auto;
+  position: relative;
+  width: 100%
+}
 
-}
-#containerCities div{
-  min-width:300px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-#row1{
+.gridDiv{
   float: left;
   clear: both;
   width: 20%;
-  height: 400px;
-  position: relative;
+  position:relative;
+  height: 80px;
   overflow: auto;
   box-shadow: 4px 4px 4px #888888;
   margin-left: auto; /* centrare imagini si margini egale */
   margin-right: auto;
-}
-
-.transparentBand{
-  position: absolute;
-  bottom: 10px;
-  width: 20%;
-  height: 50px;
-  background-color: rgba(238,222,133,0.7);
-  font-family: HurmeGeometricSans4-SemiBold;
+  margin-top: 10px;
+  border-radius: 12px;
   color: rgb(77,72,64);
   text-align: center;
+  background-color: rgba(238,222,133,0.6);
+  font-family: HurmeGeometricSans4-SemiBold;
+  outline:none;
+}
+
+
+.gridDiv:hover {
+  background-color: #7EC7D8;
+  color: white;
+  
 }
 

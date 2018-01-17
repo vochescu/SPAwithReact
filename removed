@@ -1,0 +1,10 @@
+App
+ <div>
+          <img src={require("../styles/img/maintext.png")} alt="mainText"style={{float: 'left', marginTop: '10px', marginLeft: '70px', weight: '20px', height: '40px'}} />
+        </div>
+ <br style={{clear: 'both'}} />
+        <div>
+            <input id="searchField" style={{marginLeft: '70px', width: '28%', height: '40px', float: 'left', borderRadius: '25px', outline:'none'}} type="text" />
+            <div btn onmouseover="this.style.cursor='pointer'" style={{marginLeft: '5px', float: 'left', backgroundColor: 'rgb(109,102,92)', height: '40px', width: '10%', color: 'white', paddingTop: '6px',
+            fontSize: '1.5em', fontFamily: 'HurmeGeometricSans4-SemiBold', cursor: 'pointer', textAlign: 'center', borderRadius: '25px'}}>Search</div>
+        </div>

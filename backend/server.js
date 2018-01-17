@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const Sequelize = require('sequelize')
+const cors = require('cors')
 
 //#region Definirea modelului bazei de date
 
@@ -117,6 +118,8 @@ City.hasMany(Itinerary)
 
 const app = express()
 app.use(bodyParser.json())
+app.use(express.static('../frontend/build'))
+app.use(cors())
 
 // crearea tabelelor; force : true pentru fiecare model se va executa DROP TABLE IF EXISTS inainte de a executa crearea tabelei
 app.get('/create',(req,res,next)=>{

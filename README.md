@@ -20,7 +20,7 @@ All the materials will be in English, so the web page will serve as a universal 
 
 
 [General objective]
-Developing an application on one of the specified topics, with a RESTful backend which accessed data stored in a relational database through a persistence API as well as data from an external service and an SPA front-end built with a component based framework.
+Developing an application with a RESTful backend which accessed data stored in a relational database through a persistence API as well as data from an external service and an SPA front-end built with a component based framework.
 
 [Components]
 3 entities stored in a relational database and accessed through an ORM
